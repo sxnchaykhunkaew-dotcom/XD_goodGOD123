@@ -1,0 +1,236 @@
+--[[ NAMO V6 | Key: KEY_GOD_XD_V6 ]]
+local PL,RS,UIS,LT,WS=game:GetService("Players"),game:GetService("RunService"),game:GetService("UserInputService"),game:GetService("Lighting"),game:GetService("Workspace")
+local LP,Cam,PG=PL.LocalPlayer,WS.CurrentCamera,PL.LocalPlayer:WaitForChild("PlayerGui")
+pcall(function()for _,n in ipairs({"NV6_M","NV6_K"})do if PG:FindFirstChild(n)then PG[n]:Destroy()end end end)
+local S={Sp=false,SpV=50,Jp=false,JpV=80,Inf=false,Fly=false,FlyV=50,Nc=false,Aw=false,Gm=false,Esp=false,Fb=false,Afk=false,Rj=false,Aim=false,AimS=0.1,Ka=false,KaR=15}
+local AP,FV,FG,SvP,StP=nil,nil,nil,nil,nil
+local KEY="KEY_GOD_XD_V6"
+local function N(c,p,pr)local o=Instance.new(c)for k,v in pairs(p)do o[k]=v end;if pr then o.Parent=pr end;return o end
+local function C(r,p)return N("UICorner",{CornerRadius=UDim.new(0,r)},p)end
+local function TL(p,t,s,b,c,ps,sz)local l=N("TextLabel",{Size=sz or UDim2.new(1,0,0,26),Position=ps or UDim2.new(0,0,0,0),Text=t,TextSize=s or 12,Font=b and Enum.Font.SourceSansBold or Enum.Font.SourceSans,TextColor3=c or Color3.fromRGB(255,255,255),BackgroundTransparency=1,ZIndex=5},p)return l end
+local function MB(p,t,bg,ps,sz)local b=N("TextButton",{Size=sz or UDim2.new(0.4,0,0,30),Position=ps or UDim2.new(0,0,0,0),Text=t,BackgroundColor3=bg,TextColor3=Color3.fromRGB(255,255,255),Font=Enum.Font.SourceSansBold,TextSize=12,ZIndex=5,Parent=p})C(7,b)return b end
+
+-- KEY GUI
+local KG=N("ScreenGui",{Name="NV6_K",ResetOnSpawn=false,IgnoreGuiInset=true,Parent=PG})
+local KF=N("Frame",{Size=UDim2.new(0,275,0,185),Position=UDim2.new(0.5,-137,0.5,-92),BackgroundColor3=Color3.fromRGB(14,14,18),BorderSizePixel=0,Active=true,Draggable=true,Parent=KG})
+C(12,KF)N("UIStroke",{Color=Color3.fromRGB(220,0,40),Thickness=2},KF)
+TL(KF,"🔑 NAMO V6 | KEY SYSTEM",13,true,Color3.fromRGB(220,60,60),UDim2.new(0,0,0,8),UDim2.new(1,0,0,28))
+local KI=N("TextBox",{Size=UDim2.new(0.86,0,0,32),Position=UDim2.new(0.07,0,0,44),BackgroundColor3=Color3.fromRGB(26,26,32),TextColor3=Color3.fromRGB(255,255,255),PlaceholderText="ใส่คีย์...",PlaceholderColor3=Color3.fromRGB(90,90,90),Text="",Font=Enum.Font.SourceSans,TextSize=13,ClearTextOnFocus=false,ZIndex=5,Parent=KF})
+C(7,KI)
+local KS=TL(KF,"",11,false,Color3.fromRGB(255,80,80),UDim2.new(0,0,0,82),UDim2.new(1,0,0,18))
+local VB=MB(KF,"✅ ยืนยัน",Color3.fromRGB(0,145,0),UDim2.new(0.07,0,0,106))
+local CB=MB(KF,"📋 คัดลอก",Color3.fromRGB(38,38,50),UDim2.new(0.53,0,0,106))
+CB.MouseButton1Click:Connect(function()pcall(setclipboard,KEY)pcall(toclipboard,KEY)CB.Text="✅ คัดลอกแล้ว!"task.wait(2)CB.Text="📋 คัดลอก"end)
+
+-- MAIN GUI
+local MG=N("ScreenGui",{Name="NV6_M",ResetOnSpawn=false,IgnoreGuiInset=true,Enabled=false,Parent=PG})
+local TB=N("TextButton",{Size=UDim2.new(0,42,0,42),Position=UDim2.new(0,5,0.5,-21),Text="V6",TextSize=12,Font=Enum.Font.SourceSansBold,TextColor3=Color3.fromRGB(255,255,255),BackgroundColor3=Color3.fromRGB(14,14,18),Active=true,Draggable=true,ZIndex=10,Parent=MG})
+C(12,TB)N("UIStroke",{Color=Color3.fromRGB(220,0,40),Thickness=1.5},TB)
+local MF=N("Frame",{Size=UDim2.new(0,332,0,285),Position=UDim2.new(0.5,-166,0.5,-142),BackgroundColor3=Color3.fromRGB(14,14,18),BorderSizePixel=0,Active=true,Draggable=true,ClipsDescendants=true,ZIndex=2,Parent=MG})
+C(12,MF)N("UIStroke",{Color=Color3.fromRGB(220,0,40),Thickness=1.5},MF)
+local HF=N("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=Color3.fromRGB(20,20,26),BorderSizePixel=0,ZIndex=4,Parent=MF})
+C(10,HF)TL(HF,"⚡ NAMO V6  |  DELTA MOBILE",12,true,Color3.fromRGB(220,60,60),UDim2.new(0,8,0,0),UDim2.new(1,-34,1,0))
+local XB=MB(HF,"✕",Color3.fromRGB(165,0,0),UDim2.new(1,-27,0,3),UDim2.new(0,24,0,24))
+XB.MouseButton1Click:Connect(function()MF.Visible=false end)
+N("Frame",{Size=UDim2.new(1,0,0,1),Position=UDim2.new(0,0,0,30),BackgroundColor3=Color3.fromRGB(220,0,40),BorderSizePixel=0,ZIndex=4,Parent=MF})
+local SB=N("Frame",{Size=UDim2.new(0,40,1,-32),Position=UDim2.new(0,0,0,32),BackgroundColor3=Color3.fromRGB(10,10,13),BorderSizePixel=0,ZIndex=5,Parent=MF})
+N("UIListLayout",{Padding=UDim.new(0,5),HorizontalAlignment=Enum.HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Top,Parent=SB})
+N("UIPadding",{PaddingTop=UDim.new(0,5),Parent=SB})
+local TC=N("Frame",{Size=UDim2.new(1,-42,1,-32),Position=UDim2.new(0,42,0,32),BackgroundTransparency=1,ZIndex=2,Parent=MF})
+local Tabs={}
+for _,n in ipairs({"Move","Combat","Visual","Misc"})do
+    local sf=N("ScrollingFrame",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Visible=false,ScrollBarThickness=2,ScrollBarImageColor3=Color3.fromRGB(220,0,40),CanvasSize=UDim2.new(0,0,2,0),ZIndex=3,Parent=TC})
+    Tabs[n]=sf
+    local ul=N("UIListLayout",{Padding=UDim.new(0,5),SortOrder=Enum.SortOrder.LayoutOrder,Parent=sf})
+    ul:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()sf.CanvasSize=UDim2.new(0,0,0,ul.AbsoluteContentSize.Y+8)end)
+    N("UIPadding",{PaddingTop=UDim.new(0,4),PaddingLeft=UDim.new(0,3),PaddingRight=UDim.new(0,3),Parent=sf})
+end
+Tabs.Move.Visible=true
+local ATB=nil
+for i,d in ipairs({{"📁","Move"},{"⚔️","Combat"},{"👁️","Visual"},{"⚙️","Misc"}})do
+    local b=N("TextButton",{Size=UDim2.new(0,32,0,32),Text=d[1],TextSize=16,BackgroundColor3=(i==1)and Color3.fromRGB(200,0,35)or Color3.fromRGB(26,26,34),TextColor3=Color3.fromRGB(255,255,255),ZIndex=6,Parent=SB})
+    C(7,b)if i==1 then ATB=b end
+    local tn=d[2]
+    b.MouseButton1Click:Connect(function()
+        for _,t in pairs(Tabs)do t.Visible=false end
+        Tabs[tn].Visible=true
+        if ATB then ATB.BackgroundColor3=Color3.fromRGB(26,26,34)end
+        b.BackgroundColor3=Color3.fromRGB(200,0,35)ATB=b
+    end)
+end
+TB.MouseButton1Click:Connect(function()MF.Visible=not MF.Visible end)
+
+-- BUILDERS
+local function sec(p,t)local f=N("Frame",{Size=UDim2.new(1,-4,0,18),BackgroundColor3=Color3.fromRGB(200,0,35),BackgroundTransparency=0.75,BorderSizePixel=0,ZIndex=4,Parent=p})C(4,f)TL(f,"  "..t,11,true,Color3.fromRGB(255,100,100),UDim2.new(0,0,0,0),UDim2.new(1,0,1,0))end
+local function tog(p,t,cb)
+    local f=N("Frame",{Size=UDim2.new(1,-4,0,32),BackgroundColor3=Color3.fromRGB(20,20,26),BorderSizePixel=0,ZIndex=4,Parent=p})C(7,f)
+    TL(f,t,12,false,Color3.fromRGB(215,215,215),UDim2.new(0.03,0,0,0),UDim2.new(0.7,0,1,0))
+    local b=N("TextButton",{Size=UDim2.new(0,40,0,19),Position=UDim2.new(1,-44,0.5,-9),Text="OFF",BackgroundColor3=Color3.fromRGB(130,0,0),TextColor3=Color3.fromRGB(255,255,255),Font=Enum.Font.SourceSansBold,TextSize=11,ZIndex=5,Parent=f})C(5,b)
+    local on=false
+    b.MouseButton1Click:Connect(function()on=not on;b.Text=on and"ON"or"OFF";b.BackgroundColor3=on and Color3.fromRGB(0,125,0)or Color3.fromRGB(130,0,0);pcall(cb,on)end)
+end
+local function sld(p,t,mn,mx,df,cb)
+    local f=N("Frame",{Size=UDim2.new(1,-4,0,38),BackgroundColor3=Color3.fromRGB(20,20,26),BorderSizePixel=0,ZIndex=4,Parent=p})C(7,f)
+    local lb=TL(f,t..": "..df,11,false,Color3.fromRGB(200,200,200),UDim2.new(0,6,0,2),UDim2.new(1,-8,0,16))lb.TextXAlignment=Enum.TextXAlignment.Left
+    local bg=N("Frame",{Size=UDim2.new(0.9,0,0,6),Position=UDim2.new(0.05,0,1,-10),BackgroundColor3=Color3.fromRGB(36,36,44),BorderSizePixel=0,ZIndex=5,Parent=f})C(3,bg)
+    local fi=N("Frame",{Size=UDim2.new((df-mn)/(mx-mn),0,1,0),BackgroundColor3=Color3.fromRGB(200,0,35),BorderSizePixel=0,ZIndex=6,Parent=bg})C(3,fi)
+    local dr=false
+    local function upd(x)local r=math.clamp((x-bg.AbsolutePosition.X)/bg.AbsoluteSize.X,0,1);fi.Size=UDim2.new(r,0,1,0);local v=math.floor(mn+(mx-mn)*r);lb.Text=t..": "..v;pcall(cb,v)end
+    bg.InputBegan:Connect(function(i)if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then dr=true;upd(i.Position.X)end end)
+    UIS.InputChanged:Connect(function(i)if dr and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch)then upd(i.Position.X)end end)
+    UIS.InputEnded:Connect(function(i)if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then dr=false end end)
+end
+local function btn(p,t,bg,cb)local b=N("TextButton",{Size=UDim2.new(1,-4,0,28),BackgroundColor3=bg,TextColor3=Color3.fromRGB(255,255,255),Font=Enum.Font.SourceSansBold,TextSize=12,Text=t,ZIndex=5,Parent=p})C(7,b)b.MouseButton1Click:Connect(function()pcall(cb,b)end)return b end
+
+-- MOVE
+sec(Tabs.Move,"— การเคลื่อนที่ —")
+tog(Tabs.Move,"⚡ Speed",function(on)S.Sp=on;if not on then pcall(function()local h=LP.Character:FindFirstChildOfClass("Humanoid")if h then h.WalkSpeed=16 end end)end end)
+sld(Tabs.Move,"ความเร็ว",16,500,50,function(v)S.SpV=v end)
+tog(Tabs.Move,"🦘 Jump",function(on)S.Jp=on;if not on then pcall(function()local h=LP.Character:FindFirstChildOfClass("Humanoid")if h then h.UseJumpPower=true;h.JumpPower=50 end end)end end)
+sld(Tabs.Move,"ความสูง",50,500,80,function(v)S.JpV=v end)
+tog(Tabs.Move,"♾️ Inf Jump",function(on)S.Inf=on end)
+tog(Tabs.Move,"🚀 Fly",function(on)
+    S.Fly=on;local c=LP.Character;if not c then return end
+    local hr=c:FindFirstChild("HumanoidRootPart");local hm=c:FindFirstChildOfClass("Humanoid");if not hr then return end
+    pcall(function()if hr:FindFirstChild("NB")then hr.NB:Destroy()end;if hr:FindFirstChild("NG")then hr.NG:Destroy()end end)
+    if on then
+        if hm then hm.PlatformStand=true end
+        FV=N("BodyVelocity",{Name="NB",MaxForce=Vector3.new(1e9,1e9,1e9),Velocity=Vector3.zero,Parent=hr})
+        FG=N("BodyGyro",{Name="NG",MaxTorque=Vector3.new(1e9,1e9,1e9),D=100,CFrame=hr.CFrame,Parent=hr})
+        task.spawn(function()
+            while S.Fly and hr and hr.Parent do task.wait()
+                pcall(function()local h=LP.Character:FindFirstChildOfClass("Humanoid")
+                    if h and FV and FG then local d=h.MoveDirection;local cf=Cam.CFrame
+                        FV.Velocity=d.Magnitude>0 and(cf.LookVector*-d.Z+cf.RightVector*d.X).Unit*S.FlyV or FV.Velocity*0.85;FG.CFrame=cf
+                    end
+                end)
+            end
+        end)
+    else if hm then hm.PlatformStand=false end;FV=nil;FG=nil end
+end)
+sld(Tabs.Move,"ความเร็วบิน",1,300,50,function(v)S.FlyV=v end)
+tog(Tabs.Move,"👻 Noclip",function(on)S.Nc=on end)
+tog(Tabs.Move,"🌫️ Air Walk",function(on)S.Aw=on;if not on and AP then AP:Destroy();AP=nil end end)
+
+-- COMBAT
+sec(Tabs.Combat,"— การต่อสู้ —")
+tog(Tabs.Combat,"🎯 Aimbot",function(on)S.Aim=on end)
+sld(Tabs.Combat,"Smooth",1,20,3,function(v)S.AimS=v/100 end)
+tog(Tabs.Combat,"💀 Kill Aura",function(on)S.Ka=on end)
+sld(Tabs.Combat,"ระยะ",5,60,15,function(v)S.KaR=v end)
+tog(Tabs.Combat,"🛡️ God Mode",function(on)S.Gm=on;if on then task.spawn(function()while S.Gm do task.wait(0.1);pcall(function()local h=LP.Character:FindFirstChildOfClass("Humanoid")if h then h.Health=h.MaxHealth end end)end end)end end)
+
+-- VISUAL
+sec(Tabs.Visual,"— วิชวล —")
+tog(Tabs.Visual,"🔴 ESP",function(on)
+    S.Esp=on
+    if not on then for _,p in pairs(PL:GetPlayers())do pcall(function()if p~=LP and p.Character then local b=p.Character:FindFirstChild("NESP")if b then b:Destroy()end end end)end;return end
+    task.spawn(function()
+        while S.Esp do task.wait(0.4)
+            for _,p in pairs(PL:GetPlayers())do pcall(function()
+                if p==LP or not p.Character then return end
+                local hr=p.Character:FindFirstChild("HumanoidRootPart");local hm=p.Character:FindFirstChildOfClass("Humanoid");if not hr then return end
+                local bl=hr:FindFirstChild("NESP")
+                if not bl then
+                    bl=N("BillboardGui",{Name="NESP",Size=UDim2.new(0,88,0,40),StudsOffset=Vector3.new(0,3.5,0),AlwaysOnTop=true,Parent=hr})
+                    N("TextLabel",{Name="NL",Size=UDim2.new(1,0,0.5,0),BackgroundTransparency=1,Font=Enum.Font.SourceSansBold,TextSize=12,TextColor3=Color3.fromRGB(255,80,80),Text=p.Name,Parent=bl})
+                    N("TextLabel",{Name="HL",Size=UDim2.new(1,0,0.5,0),Position=UDim2.new(0,0,0.5,0),BackgroundTransparency=1,Font=Enum.Font.SourceSans,TextSize=10,TextColor3=Color3.fromRGB(100,255,100),Parent=bl})
+                end
+                local hl=bl:FindFirstChild("HL");if hl and hm then hl.Text="HP:"..math.floor(hm.Health).."/"..math.floor(hm.MaxHealth)end
+            end)end
+        end
+    end)
+end)
+tog(Tabs.Visual,"☀️ Fullbright",function(on)pcall(function()LT.Brightness=on and 2 or 1;LT.ClockTime=14;LT.FogEnd=on and 999999 or 100000;LT.GlobalShadows=not on;local c=on and Color3.fromRGB(255,255,255)or Color3.fromRGB(127,127,127);LT.Ambient=c;LT.OutdoorAmbient=c end)end)
+
+-- MISC
+sec(Tabs.Misc,"— อื่นๆ —")
+tog(Tabs.Misc,"🛡️ Anti-AFK",function(on)S.Afk=on;if on then task.spawn(function()while S.Afk do task.wait(55);pcall(function()local vu=game:GetService("VirtualUser");vu:Button2Down(Vector2.new(0,0),CFrame.new());task.wait(0.1);vu:Button2Up(Vector2.new(0,0),CFrame.new())end)end end)end end)
+tog(Tabs.Misc,"🔄 Auto Rejoin",function(on)S.Rj=on;if on then task.spawn(function()while S.Rj do task.wait(2);pcall(function()local h=LP.Character and LP.Character:FindFirstChildOfClass("Humanoid");if h and h.Health<=0 then task.wait(3);game:GetService("TeleportService"):Teleport(game.PlaceId,LP)end end)end end)end end)
+
+-- TELEPORT
+sec(Tabs.Misc,"— เทเลพอร์ต —")
+local TD=N("TextButton",{Size=UDim2.new(1,-4,0,28),Text="👤 เลือกผู้เล่น (กดสลับ)",BackgroundColor3=Color3.fromRGB(24,24,34),TextColor3=Color3.fromRGB(210,210,210),Font=Enum.Font.SourceSans,TextSize=11,ZIndex=5,Parent=Tabs.Misc})C(7,TD)
+TD.MouseButton1Click:Connect(function()
+    local ls={}for _,p in pairs(PL:GetPlayers())do if p~=LP then table.insert(ls,p)end end
+    if #ls==0 then TD.Text="❌ ไม่มีผู้เล่น";task.wait(2);TD.Text="👤 เลือกผู้เล่น (กดสลับ)";return end
+    local i=1;for j,p in ipairs(ls)do if p==StP then i=j;break end end
+    i=(i%#ls)+1;StP=ls[i];TD.Text="👤 เลือก: "..StP.Name
+end)
+btn(Tabs.Misc,"🚀 TP ไปหาผู้เล่น",Color3.fromRGB(0,90,170),function(b)
+    if not StP then b.Text="❌ เลือกก่อน!";task.wait(2);b.Text="🚀 TP ไปหาผู้เล่น";return end
+    local hr=LP.Character and LP.Character:FindFirstChild("HumanoidRootPart");local th=StP.Character and StP.Character:FindFirstChild("HumanoidRootPart")
+    if not hr or not th then b.Text="❌ ไม่พบผู้เล่น";task.wait(2);b.Text="🚀 TP ไปหาผู้เล่น";return end
+    hr.CFrame=th.CFrame*CFrame.new(0,0,-2.5);b.Text="✅ TP แล้ว!";task.wait(2);b.Text="🚀 TP ไปหาผู้เล่น"
+end)
+local CF=N("Frame",{Size=UDim2.new(1,-4,0,70),BackgroundColor3=Color3.fromRGB(20,20,26),BorderSizePixel=0,ZIndex=4,Parent=Tabs.Misc})C(7,CF)
+TL(CF,"📍 TP พิกัด XYZ:",11,true,Color3.fromRGB(195,195,195),UDim2.new(0,6,0,2),UDim2.new(1,0,0,16))
+local CI={}
+for i,a in ipairs({"X","Y","Z"})do
+    local bx=N("TextBox",{Size=UDim2.new(0.28,0,0,23),Position=UDim2.new((i-1)*0.33+0.02,0,0,20),PlaceholderText=a,Text="",BackgroundColor3=Color3.fromRGB(28,28,38),TextColor3=Color3.fromRGB(255,255,255),Font=Enum.Font.SourceSans,TextSize=12,ClearTextOnFocus=false,ZIndex=6,Parent=CF})
+    C(5,bx);CI[a]=bx
+end
+local TC2=N("TextButton",{Size=UDim2.new(0.96,0,0,18),Position=UDim2.new(0.02,0,0,46),Text="🎯 TP ไปพิกัด",BackgroundColor3=Color3.fromRGB(0,90,170),TextColor3=Color3.fromRGB(255,255,255),Font=Enum.Font.SourceSansBold,TextSize=11,ZIndex=6,Parent=CF})C(5,TC2)
+TC2.MouseButton1Click:Connect(function()
+    local x,y,z=tonumber(CI.X.Text),tonumber(CI.Y.Text),tonumber(CI.Z.Text)
+    if not x or not y or not z then TC2.Text="❌ กรอก X Y Z!";task.wait(2);TC2.Text="🎯 TP ไปพิกัด";return end
+    local hr=LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+    if hr then hr.CFrame=CFrame.new(x,y,z);TC2.Text="✅ TP แล้ว!";task.wait(2);TC2.Text="🎯 TP ไปพิกัด"end
+end)
+btn(Tabs.Misc,"💾 บันทึกตำแหน่ง",Color3.fromRGB(70,50,0),function(b)local hr=LP.Character and LP.Character:FindFirstChild("HumanoidRootPart");if hr then SvP=hr.CFrame;local p=hr.Position;b.Text=string.format("✅(%.0f,%.0f,%.0f)",p.X,p.Y,p.Z);task.wait(3);b.Text="💾 บันทึกตำแหน่ง"end end)
+btn(Tabs.Misc,"↩️ กลับตำแหน่งที่บันทึก",Color3.fromRGB(0,70,70),function(b)if not SvP then b.Text="❌ ยังไม่ได้บันทึก!";task.wait(2);b.Text="↩️ กลับตำแหน่งที่บันทึก";return end;local hr=LP.Character and LP.Character:FindFirstChild("HumanoidRootPart");if hr then hr.CFrame=SvP;b.Text="✅ กลับแล้ว!";task.wait(2);b.Text="↩️ กลับตำแหน่งที่บันทึก"end end)
+local IL=TL(Tabs.Misc,"...",10,false,Color3.fromRGB(110,110,110),UDim2.new(0,4,0,0),UDim2.new(1,-4,0,20))IL.TextXAlignment=Enum.TextXAlignment.Left
+
+-- HEARTBEAT
+RS.Heartbeat:Connect(function()pcall(function()
+    local c=LP.Character;if not c then return end
+    local hm=c:FindFirstChildOfClass("Humanoid");local hr=c:FindFirstChild("HumanoidRootPart")
+    if S.Sp and hm then hm.WalkSpeed=S.SpV end
+    if S.Jp and hm then hm.UseJumpPower=true;hm.JumpPower=S.JpV end
+    if S.Nc then for _,v in pairs(c:GetDescendants())do if v:IsA("BasePart")then v.CanCollide=false end end end
+    if S.Aw and hr then
+        if not AP or not AP.Parent then AP=N("Part",{Name="NAP",Size=Vector3.new(6,1,6),Anchored=true,Transparency=1,CanCollide=true,Parent=WS})end
+        AP.CFrame=CFrame.new(hr.Position.X,hr.Position.Y-3.2,hr.Position.Z)
+    elseif not S.Aw and AP then AP:Destroy();AP=nil end
+    if S.Ka and hr then
+        local tl=c:FindFirstChildOfClass("Tool")
+        for _,p in pairs(PL:GetPlayers())do if p~=LP and p.Character then
+            local ph=p.Character:FindFirstChild("HumanoidRootPart")
+            if ph and(ph.Position-hr.Position).Magnitude<=S.KaR then
+                hr.CFrame=ph.CFrame*CFrame.new(0,0,-2.5)
+                if tl then pcall(function()local re=tl:FindFirstChildOfClass("RemoteEvent");if re then re:FireServer()end end)end
+            end
+        end end
+    end
+    if S.Aim then
+        local cl,mn=nil,math.huge
+        for _,p in pairs(PL:GetPlayers())do if p~=LP and p.Character then
+            local ph=p.Character:FindFirstChild("HumanoidRootPart");local pm=p.Character:FindFirstChildOfClass("Humanoid")
+            if ph and pm and pm.Health>0 then local d=(ph.Position-(hr and hr.Position or Vector3.zero)).Magnitude;if d<mn then mn=d;cl=p end end
+        end end
+        if cl and cl.Character and cl.Character:FindFirstChild("HumanoidRootPart")then
+            Cam.CFrame=Cam.CFrame:Lerp(CFrame.new(Cam.CFrame.Position,cl.Character.HumanoidRootPart.Position),S.AimS)
+        end
+    end
+end)end)
+
+UIS.JumpRequest:Connect(function()if S.Inf then pcall(function()local h=LP.Character:FindFirstChildOfClass("Humanoid");if h then h:ChangeState(Enum.HumanoidStateType.Jumping)end end)end end)
+
+local function hook(c)task.wait(0.5);local h=c:WaitForChild("Humanoid",5);if not h then return end
+    h:GetPropertyChangedSignal("WalkSpeed"):Connect(function()if S.Sp then task.wait();h.WalkSpeed=S.SpV end end)
+    h:GetPropertyChangedSignal("JumpPower"):Connect(function()if S.Jp then task.wait();h.UseJumpPower=true;h.JumpPower=S.JpV end end)
+end
+if LP.Character then hook(LP.Character)end
+LP.CharacterAdded:Connect(function(c)S.Fly=false;if AP then AP:Destroy();AP=nil end;FV=nil;FG=nil;hook(c)end)
+
+task.spawn(function()while true do task.wait(2);pcall(function()
+    local ping=math.floor(LP:GetNetworkPing()*1000);local fps=math.floor(1/RS.Heartbeat:Wait())
+    IL.Text=string.format("👤%s 📡%dms 🖥️%dfps",LP.Name,ping,fps)
+end)end end)
+
+-- VERIFY
+VB.MouseButton1Click:Connect(function()
+    if(KI.Text or""):gsub("%s+","")== KEY then KG:Destroy();MG.Enabled=true;MF.Visible=true
+    else KI.Text="";KI.PlaceholderText="❌ คีย์ผิด!";KS.Text="❌ คีย์ผิด";task.wait(2.5);pcall(function()KS.Text="";KI.PlaceholderText="ใส่คีย์..."end)end
+end)
+print("[NAMO V6] ✅ | Key: KEY_GOD_XD_V6")
